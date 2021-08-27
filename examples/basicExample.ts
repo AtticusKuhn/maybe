@@ -7,5 +7,5 @@ console.log(x.bind(safeDiv(2)).show())
 
 
 const eitherDiv = (a: number) => (b: number) => b === 0 ? new Either<string, number>({ left: "cannot divide by 0" }) : new Either<string, number>({ right: a / b })
-const b = eitherDiv(5)(0)
-console.log(b.rightMap(x => 2 * x).show())
+const b = eitherDiv(5)(10)
+console.log(b.rightMap(x => 2 * x).bind(eitherDiv(7)).show())

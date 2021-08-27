@@ -58,5 +58,12 @@ class Either<Left, Right> {
             return `Right ${JSON.stringify(this.value.right)}`
         }
     }
+    bind(f: (value: Right) => Either<Left, Right>): Either<Left, Right> {
+        if ("left" in this.value) {
+            return this
+        } else {
+            return f(this.value.right)
+        }
+    }
 }
 export default Either

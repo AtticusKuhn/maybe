@@ -23,7 +23,7 @@ class Maybe<T> {
         const v = this.value === null ? null : f(this.value)
         return new Maybe(v)
     }
-    else(defaultValue: T) {
+    else(defaultValue: T): T {
         if (this.value === null) {
             return defaultValue
         } else {
@@ -35,6 +35,13 @@ class Maybe<T> {
             return f(this.value)
         } else {
             return null as unknown as Maybe<K>
+        }
+    }
+    show(): string {
+        if (this.value === null) {
+            return "Nothing"
+        } else {
+            return `Just ${JSON.stringify(this.value)}`
         }
     }
 }

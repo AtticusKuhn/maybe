@@ -1,0 +1,16 @@
+{
+  "name": "maybe",
+  "version": "1.0.0",
+  "main": "index.ts",
+  "repository": "https://github.com/eulerthedestroyer/maybe.git",
+  "author": "eulerthedestroyer",
+  "license": "MIT",
+  "scripts": {
+    "tsc": "tsc",
+    "example": "ts-node examples/basicExample"
+  },
+  "devDependencies": {
+    "ts-node": "^10.2.1",
+    "typescript": "^4.4.2"
+  }
+}

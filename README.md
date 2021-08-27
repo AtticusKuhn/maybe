@@ -5,9 +5,13 @@ This makes error handling a lot easier. There are many functions which might ret
 maybe encapsulates this information
 # Example
 ```ts
-import Maybe from "../src/index"
+const maybeDiv = (a: number) => (b: number) => b === 0 ? new Maybe<number>(null) : new Maybe(a / b)
+const x = maybeDiv(2)(1)
+console.log(x.map(x => x + 1).else(5)) //  3
+console.log(x.bind(maybeDiv(2)).show()) // Just 7
 
-const safeDiv = (a: number) => (b: number) => b === 0 ? new Maybe<number>(null) : new Maybe(a / b)
-const x = safeDiv(2)(0)
-console.log(x.map(x => x + 1).else(5))
+
+const eitherDiv = (a: number) => (b: number) => b === 0 ? new Either<string, number>({ left: "cannot divide by 0" }) : new Either<string, number>({ right: a / b })
+const b = eitherDiv(5)(10)
+console.log(b.rightMap(x => 2 * x).bind(eitherDiv(7)).show()) // Right 7
 ```
